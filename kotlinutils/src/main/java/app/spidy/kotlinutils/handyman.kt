@@ -22,7 +22,7 @@ fun debug(o: Any?) {
             for (i in 0 until (20 - this.fileName.length)) {
                 spaces += " "
             }
-            Log.d(this.fileName, "[${this.fileName}] => ${spaces}$o")
+            Log.d(this.fileName, "[${this.fileName}] ${spaces}=> $o")
         }
     }
 }
@@ -34,7 +34,7 @@ fun error(o: Any?) {
             for (i in 0 until (20 - this.fileName.length)) {
                 spaces += " "
             }
-            Log.e(this.fileName, "[${this.fileName}] => ${spaces}$o")
+            Log.e(this.fileName, "[${this.fileName}] ${spaces}=> $o")
         }
     }
 }
@@ -46,7 +46,7 @@ fun warn(o: Any?) {
             for (i in 0 until (20 - this.fileName.length)) {
                 spaces += " "
             }
-            Log.w(this.fileName, "[${this.fileName}] => ${spaces}$o")
+            Log.w(this.fileName, "[${this.fileName}] ${spaces}=> $o")
         }
     }
 }
@@ -58,7 +58,7 @@ fun info(o: Any?) {
             for (i in 0 until (20 - this.fileName.length)) {
                 spaces += " "
             }
-            Log.i(this.fileName, "[${this.fileName}] => ${spaces}$o")
+            Log.i(this.fileName, "[${this.fileName}] ${spaces}=> $o")
         }
     }
 }
