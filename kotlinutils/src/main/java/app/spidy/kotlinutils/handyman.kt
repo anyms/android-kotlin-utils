@@ -15,34 +15,50 @@ fun Context.toast(o: Any?, isLong: Boolean = false) {
     Toast.makeText(this, o.toString(), duration).show()
 }
 
-fun String.debug(o: Any?) {
+fun debug(o: Any?) {
     if (DEBUG_MODE) {
         Throwable().stackTrace[1].apply {
-            Log.d(this@debug, "[${this.fileName}] ${this@debug}: $o")
+            var spaces = ""
+            for (i in 0 until (20 - this.fileName.length)) {
+                spaces += " "
+            }
+            Log.d(this.fileName, "[${this.fileName}] => ${spaces}$o")
         }
     }
 }
 
-fun String.error(o: Any?) {
+fun error(o: Any?) {
     if (DEBUG_MODE) {
         Throwable().stackTrace[1].apply {
-            Log.d(this@error, "[${this.fileName}] ${this@error}: $o")
+            var spaces = ""
+            for (i in 0 until (20 - this.fileName.length)) {
+                spaces += " "
+            }
+            Log.e(this.fileName, "[${this.fileName}] => ${spaces}$o")
         }
     }
 }
 
-fun String.warn(o: Any?) {
+fun warn(o: Any?) {
     if (DEBUG_MODE) {
         Throwable().stackTrace[1].apply {
-            Log.d(this@warn, "[${this.fileName}] ${this@warn}: $o")
+            var spaces = ""
+            for (i in 0 until (20 - this.fileName.length)) {
+                spaces += " "
+            }
+            Log.w(this.fileName, "[${this.fileName}] => ${spaces}$o")
         }
     }
 }
 
-fun String.info(o: Any?) {
+fun info(o: Any?) {
     if (DEBUG_MODE) {
         Throwable().stackTrace[1].apply {
-            Log.d(this@info, "[${this.fileName}] ${this@info}: $o")
+            var spaces = ""
+            for (i in 0 until (20 - this.fileName.length)) {
+                spaces += " "
+            }
+            Log.i(this.fileName, "[${this.fileName}] => ${spaces}$o")
         }
     }
 }
