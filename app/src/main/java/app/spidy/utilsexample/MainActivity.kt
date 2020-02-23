@@ -2,7 +2,8 @@ package app.spidy.utilsexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import app.spidy.kotlinutils.toast
+import android.util.Log
+import app.spidy.kotlinutils.TimeMachine
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,6 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        toast("hello, world")
+        val timeMachine = TimeMachine(this)
+
+        timeMachine.schedule("simple_task").after(360000).run {
+            Log.d("hello","hello, world")
+        }
     }
 }
