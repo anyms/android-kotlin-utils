@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val timeMachine = TimeMachine(this)
 
-        timeMachine.schedule("simple_task").after(360000).run {
+        timeMachine.schedule("simple_task").after(TimeMachine.HOUR).run {
             Log.d("hello","hello, world")
         }
     }
