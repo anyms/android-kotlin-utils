@@ -21,10 +21,6 @@ class TimeMachine(context: Context) {
             tinyDB.putLong(tag, currentTime)
         }
 
-        Log.d("hello", "prevTime: $prevTime")
-        Log.d("hello", "currentTime: $currentTime")
-        Log.d("hello", "diff: ${currentTime - prevTime}")
-
         return Executor(tag, prevTime, currentTime, type)
     }
 
