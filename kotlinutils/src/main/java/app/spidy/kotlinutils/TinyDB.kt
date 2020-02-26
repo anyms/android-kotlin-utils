@@ -2,10 +2,10 @@ package app.spidy.kotlinutils
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Environment
-import android.preference.PreferenceManager
 import android.text.TextUtils
 import android.util.Log
 import java.io.File
