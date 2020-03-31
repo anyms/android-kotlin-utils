@@ -7,6 +7,7 @@ import android.view.View
 class Alert(private val context: Context) {
     private var builder = AlertDialog.Builder(context)
     private lateinit var alertDialog: AlertDialog
+    private var onCloseCallback: (() -> Unit)? = null
 
     var title: String = ""
         set(value) {
@@ -34,12 +35,18 @@ class Alert(private val context: Context) {
     fun show() {
         if (!::alertDialog.isInitialized) {
             alertDialog = builder.create()
-            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK") {_, _ -> }
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK") {_, _ ->
+                onCloseCallback?.invoke()
+            }
         }
         alertDialog.show()
     }
 
     fun dismiss() {
         alertDialog.dismiss()
+    }
+
+    fun onDismiss(callback: () -> Unit) {
+        onCloseCallback = callback
     }
 }
