@@ -1,5 +1,7 @@
 package app.spidy.kotlinutils
 
+
+// TODO: not implemented yet
 class Promise(val callback: (resolve: (Any?) -> Unit, reject: (Any?) -> Unit) -> Unit) {
     private var ret: Any? = null
     init {
