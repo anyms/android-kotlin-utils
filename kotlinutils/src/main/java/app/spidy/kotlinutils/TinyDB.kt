@@ -14,6 +14,14 @@ class TinyDB(context: Context) {
         }
     }
 
+    fun getLong(key: String, defaultValue: Long = 0): Long = preferences.getLong(key, defaultValue)
+    fun putLong(key: String, value: Long) {
+        preferences.edit().apply {
+            putLong(key, value)
+            apply()
+        }
+    }
+
     fun getBoolean(key: String): Boolean = preferences.getBoolean(key, false)
     fun putBoolean(key: String, value: Boolean) {
         preferences.edit().apply {
