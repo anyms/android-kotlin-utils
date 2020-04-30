@@ -36,7 +36,7 @@ class Ask(private val context: Context) {
     fun show() {
         if (!::alertDialog.isInitialized) {
             alertDialog = builder.create()
-            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK") { _, _ ->
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "OK") { _, _ ->
                 onOkCallback?.invoke()
             }
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Cancel") { _, _ ->
