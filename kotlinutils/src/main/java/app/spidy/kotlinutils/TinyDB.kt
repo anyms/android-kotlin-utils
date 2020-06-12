@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.preference.PreferenceManager
 
 class TinyDB(context: Context) {
-    private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+    private val preferences = context.getSharedPreferences("tiny_db", Context.MODE_PRIVATE)
 
     fun getInt(key: String, defaultValue: Int = 0): Int = preferences.getInt(key, defaultValue)
     fun putInt(key: String, value: Int) {

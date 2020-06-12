@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import app.spidy.kotlinutils.Alert
+import app.spidy.kotlinutils.Krypton
 import app.spidy.kotlinutils.TimeMachine
+import app.spidy.kotlinutils.debug
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,5 +26,11 @@ class MainActivity : AppCompatActivity() {
             customView = v
         }
         alert.show()
+
+        val krypton = Krypton()
+        val keygen = krypton.generate()
+        val publicKey = keygen["pb"]!!
+        val privateKey = keygen["pt"]!!
+        val equalizer = keygen["eq"]!!
     }
 }
