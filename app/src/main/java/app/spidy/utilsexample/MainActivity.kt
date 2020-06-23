@@ -11,12 +11,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        fetch("http://httpbin.org") {
-            val s = readText()
-            onUiThread { textView.text = s }
-        }
-
-
     }
 }
