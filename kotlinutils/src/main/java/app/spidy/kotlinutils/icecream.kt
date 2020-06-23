@@ -20,34 +20,26 @@ fun Context.toast(o: Any?, isLong: Boolean = false) {
 }
 
 fun debug(o: Any?) {
-    if (BuildConfig.DEBUG) {
-        Throwable().stackTrace[1].apply {
-            Log.d(this.fileName, "$o")
-        }
+    Throwable().stackTrace[1].apply {
+        Log.d("[${this.lineNumber}]:${this.fileName}", "$o")
     }
 }
 
 fun error(o: Any?) {
-    if (BuildConfig.DEBUG) {
-        Throwable().stackTrace[1].apply {
-            Log.e(this.fileName, "$o")
-        }
+    Throwable().stackTrace[1].apply {
+        Log.e("[${this.lineNumber}]:${this.fileName}", "$o")
     }
 }
 
 fun warn(o: Any?) {
-    if (BuildConfig.DEBUG) {
-        Throwable().stackTrace[1].apply {
-            Log.w(this.fileName, "$o")
-        }
+    Throwable().stackTrace[1].apply {
+        Log.w("[${this.lineNumber}]:${this.fileName}", "$o")
     }
 }
 
 fun info(o: Any?) {
-    if (BuildConfig.DEBUG) {
-        Throwable().stackTrace[1].apply {
-            Log.i(this.fileName, "$o")
-        }
+    Throwable().stackTrace[1].apply {
+        Log.i("[${this.lineNumber}]:${this.fileName}", "$o")
     }
 }
 
