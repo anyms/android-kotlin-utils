@@ -17,6 +17,6 @@ Add the dependency
 
 ```gradle
 dependencies {
-        implementation 'com.github.anyms:android-utils:Tag'
+        implementation 'com.github.anyms:android-kotlin-utils:Tag'
 }
 ```
