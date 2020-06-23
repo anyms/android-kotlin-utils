@@ -2,12 +2,8 @@ package app.spidy.utilsexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import app.spidy.kotlinutils.Alert
-import app.spidy.kotlinutils.Krypton
-import app.spidy.kotlinutils.TimeMachine
-import app.spidy.kotlinutils.debug
+import app.spidy.kotlinutils.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,22 +11,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val timeMachine = TimeMachine(this)
 
-        timeMachine.schedule("simple_task").after(TimeMachine.HOUR).run {
-            Log.d("hello","hello, world")
+        fetch("http://httpbin.org") {
+            val s = readText()
+            onUiThread { textView.text = s }
         }
-        val v = LayoutInflater.from(this).inflate(R.layout.activity_main, null)
-        val alert = Alert(this).apply {
-            title = "Alert!"
-            customView = v
-        }
-        alert.show()
 
-        val krypton = Krypton()
-        val keygen = krypton.generate()
-        val publicKey = keygen["pb"]!!
-        val privateKey = keygen["pt"]!!
-        val equalizer = keygen["eq"]!!
+
     }
 }
