@@ -1,6 +1,5 @@
 package app.spidy.kotlinutils
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.res.Configuration
 import android.util.Log
@@ -21,25 +20,25 @@ fun Context.toast(o: Any?, isLong: Boolean = false) {
 
 fun debug(o: Any?) {
     Throwable().stackTrace[1].apply {
-        Log.d("[${this.lineNumber}]:${this.fileName}", "$o")
+        Log.d(this.fileName, "$o")
     }
 }
 
 fun error(o: Any?) {
     Throwable().stackTrace[1].apply {
-        Log.e("[${this.lineNumber}]:${this.fileName}", "$o")
+        Log.e(this.fileName, "$o")
     }
 }
 
 fun warn(o: Any?) {
     Throwable().stackTrace[1].apply {
-        Log.w("[${this.lineNumber}]:${this.fileName}", "$o")
+        Log.w(this.fileName, "$o")
     }
 }
 
 fun info(o: Any?) {
     Throwable().stackTrace[1].apply {
-        Log.i("[${this.lineNumber}]:${this.fileName}", "$o")
+        Log.i(this.fileName, "$o")
     }
 }
 
