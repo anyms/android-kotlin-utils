@@ -47,20 +47,20 @@ fun info(o: Any?) {
 
 
 fun onUiThread(callback: () -> Unit) {
-    Handler(Looper.getMainLooper()).post {
+    GlobalScope.launch(Dispatchers.Main) {
         callback()
     }
 }
 
-//suspend fun sleep(millis: Long) {
-//    delay(millis)
-//}
+suspend fun sleep(millis: Long) {
+    delay(millis)
+}
 
-//fun async(block: () -> Unit) {
-//    GlobalScope.launch(Dispatchers.IO) {
-//        block()
-//    }
-//}
+fun async(block: () -> Unit) {
+    GlobalScope.launch(Dispatchers.IO) {
+        block()
+    }
+}
 
 fun ignore(callback: Exception?.() -> Unit) {
     try {
@@ -107,11 +107,13 @@ fun Context.readFromRawFolder(path: String): ByteArray {
 
 
 fun fetch(url: String, callback: BufferedReader.() -> Unit) {
-    val uri = URL(url)
+    async {
+        val uri = URL(url)
 
-    with(uri.openConnection() as HttpURLConnection) {
-        requestMethod = "GET"
-        callback(inputStream.bufferedReader())
+        with(uri.openConnection() as HttpURLConnection) {
+            requestMethod = "GET"
+            callback(inputStream.bufferedReader())
+        }
     }
 }
 
