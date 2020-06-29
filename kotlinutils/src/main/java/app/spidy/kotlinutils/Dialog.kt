@@ -7,6 +7,7 @@ import android.view.View
 
 class Dialog(private val context: Context) {
     private var builder = AlertDialog.Builder(context)
+    private lateinit var dialog: AlertDialog
 
     fun withTitle(title: String): Dialog {
         builder.setTitle(title)
@@ -54,9 +55,12 @@ class Dialog(private val context: Context) {
         return this
     }
 
-    fun show(): AlertDialog {
-        val dialog = builder.create()
-        dialog.show()
+    fun create(): AlertDialog {
+        dialog = builder.create()
         return dialog
+    }
+
+    fun show() {
+        dialog.show()
     }
 }
